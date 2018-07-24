@@ -5,16 +5,16 @@ const Navigation = props =>
 
   <nav className="main-nav">
     <ul>
-      {props.catagories.map((catagory, index) =>
+      {props.categories.map((category, index) =>
         <li key={index}>
-          <a>{catagory.name}</a>
+          <a>{category.name}</a>
         </li>
       )}
     </ul>
   </nav>
 
 Navigation.propTypes = {
-  catagories: PropTypes.array.isRequired
+  categories: PropTypes.array.isRequired
 }
 
 export default Navigation;

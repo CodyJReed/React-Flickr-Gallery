@@ -18,7 +18,7 @@ const flickr = process.env.REACT_APP_API;
 class App extends Component {
 
   state = {
-    catagories: [
+    categories: [
       {
         name: 'Cats',
       },
@@ -55,7 +55,7 @@ class App extends Component {
 
           <SearchForm onSearch={this.performSearch}/>
 
-          <Navigation catagories={this.state.catagories}/>
+          <Navigation categories={this.state.categories}/>
 
           <Gallery data={this.state.images}/>
 
