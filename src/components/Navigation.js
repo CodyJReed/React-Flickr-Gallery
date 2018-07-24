@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 const Navigation = props =>
 
@@ -7,7 +8,7 @@ const Navigation = props =>
     <ul>
       {props.categories.map((category, index) =>
         <li key={index}>
-          <a>{category.name}</a>
+          <Link to={category.name.toLowerCase()}>{category.name}</Link>
         </li>
       )}
     </ul>
