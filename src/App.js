@@ -10,6 +10,10 @@ import SearchForm from './components/SearchForm';
 import Navigation from './components/Navigation';
 import Gallery from './components/Gallery';
 
+require('dotenv').config()
+
+// Get Flickr api_key from index.js .env file and assign to API
+const flickr = process.env.REACT_APP_API;
 
 class App extends Component {
 
@@ -29,7 +33,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    axios.get('https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=46f2c995fa45e1d99ec84d1224660b77&tags=feline&per_page=20&format=json&nojsoncallback=1')
+    axios.get(`https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${flickr}&tags=feline&per_page=20&format=json&nojsoncallback=1`)
       .then(response => {
         this.setState({
           images: response.data.photos.photo
@@ -41,7 +45,6 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.state.images);
     return (
       // <BrowserRouter>
         <div className="container">
