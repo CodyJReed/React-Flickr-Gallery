@@ -10,7 +10,6 @@ import SearchForm from './components/SearchForm';
 import Navigation from './components/Navigation';
 import Gallery from './components/Gallery';
 
-require('dotenv').config()
 
 // Get Flickr api_key from index.js .env file and assign to API
 const flickr = process.env.REACT_APP_API;
