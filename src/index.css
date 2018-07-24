@@ -4,7 +4,7 @@ body {
   color: #3f4850;
 }
 h2 {
-  font-size: 2em;
+  font-size: 1em;
   margin: 52px 0 40px;
   text-transform: capitalize;
 }
@@ -43,6 +43,8 @@ input {
   margin-bottom: 1em;
 }
 .main-nav a {
+  font-weight: normal;
+  font-size: 16px;
   display: block;
   background: #438bbd;
   border-radius: 3px;

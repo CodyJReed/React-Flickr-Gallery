@@ -1,21 +1,15 @@
 import React from 'react';
-import {
-  Form,
-  FormGroup,
-  FormControl,
-  Button
-} from 'react-bootstrap';
+import search from '../search.svg';
+
 
 const SearchForm = () => (
-  <Form inline>
-    <FormGroup controlId="formInlineEmail">
-      <FormControl type="search" placeholder="Search" />
-    </FormGroup>
+  <form className={"search-form"}>
+    <input type="search" placeholder="Search" />
     {' '}
-    <Button type="submit">
-      search
-    </Button>
-  </Form>
+    <button type="submit">
+      <img src={search} alt="Search Icon" />
+    </button>
+  </form>
 
 );
 
