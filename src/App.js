@@ -11,7 +11,8 @@ import Navigation from './components/Navigation';
 import Gallery from './components/Gallery';
 
 
-// Get Flickr api_key from index.js .env file and assign to API
+
+// Get Flickr api_key from .env file and assign to variable
 const flickr = process.env.REACT_APP_API;
 
 class App extends Component {
@@ -32,14 +33,18 @@ class App extends Component {
   }
 
   componentDidMount() {
-    axios.get(`https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${flickr}&tags=feline&per_page=20&format=json&nojsoncallback=1`)
+    this.performSearch();
+  }
+
+  performSearch = (keyword = 'creek') => {
+    axios.get(`https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${flickr}&tags=${keyword}&per_page=20&format=json&nojsoncallback=1`)
       .then(response => {
         this.setState({
           images: response.data.photos.photo
         })
       })
       .catch(error => {
-        console.log(error);
+        console.log('Error fetching and parsing data', error);
       });
   }
 
@@ -48,7 +53,7 @@ class App extends Component {
       // <BrowserRouter>
         <div className="container">
 
-          <SearchForm />
+          <SearchForm onSearch={this.performSearch}/>
 
           <Navigation catagories={this.state.catagories}/>
 

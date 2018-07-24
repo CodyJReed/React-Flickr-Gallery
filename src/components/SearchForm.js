@@ -1,16 +1,36 @@
-import React from 'react';
+import React, { Component } from 'react';
 import search from '../search.svg';
 
 
-const SearchForm = () => (
-  <form className={"search-form"}>
-    <input type="search" placeholder="Search" />
-    {' '}
-    <button type="submit">
-      <img src={search} alt="Search Icon" />
-    </button>
-  </form>
+export default class SearchForm extends Component {
 
-);
+  state = {
+    searchText: ''
+  }
 
-export default SearchForm;
+  onSearchChange = e => {
+    this.setState({
+      searchText: e.target.value
+    })
+  }
+
+  handleSubmit = e => {
+    e.preventDefault();
+    this.props.onSearch(this.keyword.value);
+    e.currentTarget.reset();
+  }
+
+  render() {
+    return (
+    <form className={"search-form"} onSubmit={this.handleSubmit}>
+      <input type="search"
+             onChange={this.onSearchChange}
+             ref={(input) => this.keyword = input}
+             placeholder="Search" />
+      <button type="submit">
+        <img src={search} alt="Search Icon" />
+      </button>
+    </form>
+   );
+  }
+}
