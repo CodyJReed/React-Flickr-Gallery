@@ -38,18 +38,22 @@ export default class Main extends Component {
     }
   }
 
-componentDidMount() {
-    this.performSearch();
-  }
-
-componentDidUpdate(prevProps) {
-  if (this.props.keyword !== prevProps.keyword) {
-    this.performSearch();
+  componentDidMount() {
+      if(this.props.history !== undefined) {
+        this.props.history.push('/search/MistyMountain');
+      }
+      this.performSearch();
     }
-}
+
+    componentDidUpdate(prevProps) {
+        if (this.props.keyword !== prevProps.keyword) {
+          this.performSearch();
+        }
+      }
 
 // Fetch data from Flickr API using supplied keyword and apiKey
 performSearch = (keyword = this.props.keyword || 'Misty Mountain') => {
+  console.log(keyword);
 
   // Save keyword value to tag
   tag = keyword;

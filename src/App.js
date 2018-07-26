@@ -19,14 +19,14 @@ class App extends Component {
           <Route exact path="/"component={Main} />
 
           {/* Route for displaying SearchForm results */}
-          <Route path="/search/:tag" component={QueryResults } />
+          <Route path="/search/:tag" component={QueryResults} />
 
           {/* For each Nav item create a Route */}
           {categories.map((category, index) =>
             <Route
               key={index}
-              path={`/${category.name}`}
-              render={ () => <Main keyword={`${category.name}`} /> }
+              path={`/search/${category.name}`}
+              render={ props => <Main keyword={`${category.name}`} />}
              />
           )}
 

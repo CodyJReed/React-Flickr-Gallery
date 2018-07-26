@@ -8,7 +8,7 @@ const Navigation = props =>
     <ul>
       {props.categories.map((category, index) =>
         <li key={index}>
-          <Link to={`/${category.name.toLowerCase()}`}>{category.name}</Link>
+          <Link to={`/search/${category.name.toLowerCase()}`}>{category.name}</Link>
         </li>
       )}
     </ul>
