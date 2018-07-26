@@ -14,7 +14,7 @@ const flickr = process.env.REACT_APP_API;
 // List of categories
 const categories = [
   {
-    name: 'Sierra',
+    name: 'Yuba',
   },
   {
     name: 'Label',
@@ -29,15 +29,10 @@ export default class Main extends Component {
     super();
     this.state = {
       images: [],
-      loading: true
+      loading: true,
+      keyword: ''
     }
   }
-
-  componentDidUpdate(prevProps) {
-     if (this.props.keyword !== prevProps.keyword) {
-       this.performSearch();
-     }
-   }
 
 componentDidMount() {
     this.performSearch();
