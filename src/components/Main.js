@@ -39,9 +39,6 @@ export default class Main extends Component {
   }
 
   componentDidMount() {
-      if(this.props.history !== undefined) {
-        this.props.history.push('/search/MistyMountain');
-      }
       this.performSearch();
     }
 
@@ -76,7 +73,7 @@ performSearch = (keyword = this.props.keyword || 'Misty Mountain') => {
     return (
       <div className="container">
 
-        <SearchForm onSearch={this.performSearch}/>
+        <SearchForm />
 
         <Navigation categories={categories}/>
 
@@ -92,6 +89,3 @@ performSearch = (keyword = this.props.keyword || 'Misty Mountain') => {
     );
   }
 }
-
-// Export object for use with loop in App.js route
-export {categories}
