@@ -9,12 +9,14 @@ class SearchForm extends Component {
     searchText: ''
   }
 
+  // When input field is in focus
   onSearchChange = e => {
     this.setState({
       searchText: e.target.value
     })
   }
 
+  // Define function to handle "submit" event
   handleSubmit = e => {
     e.preventDefault();
     let tag = this.keyword.value;

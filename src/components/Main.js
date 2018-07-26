@@ -26,6 +26,7 @@ const categories = [
   },
 ];
 
+// variable to hold "keyword" value from performSearch function
 let tag = '';
 
 export default class Main extends Component {
@@ -47,10 +48,13 @@ componentDidUpdate(prevProps) {
     }
 }
 
+// Fetch data from Flickr API using supplied keyword and apiKey
 performSearch = (keyword = this.props.keyword || 'Misty Mountain') => {
 
+  // Save keyword value to tag
   tag = keyword;
 
+  // Request Data from Flickr using axios
   axios.get(`https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${keyword}&per_page=20&format=json&nojsoncallback=1`)
     .then(response => {
       this.setState({
@@ -85,4 +89,5 @@ performSearch = (keyword = this.props.keyword || 'Misty Mountain') => {
   }
 }
 
+// Export object for use with loop in App.js route
 export {categories}

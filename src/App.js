@@ -15,12 +15,13 @@ class App extends Component {
       <BrowserRouter>
 
         <Switch>
-
+          {/* Root path */}
           <Route exact path="/"component={Main} />
 
+          {/* Route for displaying SearchForm results */}
           <Route path="/search/:tag" component={QueryResults } />
 
-
+          {/* For each Nav item create a Route */}
           {categories.map((category, index) =>
             <Route
               key={index}
@@ -29,7 +30,7 @@ class App extends Component {
              />
           )}
 
-
+          {/* "404" like route when path does not match above examples */}
           <Route component={NotFound} />
         </Switch>
       </BrowserRouter>
