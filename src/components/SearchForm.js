@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
+import { withRouter} from 'react-router';
 import search from '../search.svg';
 
 
-export default class SearchForm extends Component {
+class SearchForm extends Component {
 
   state = {
     searchText: ''
@@ -16,7 +17,10 @@ export default class SearchForm extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    this.props.onSearch(this.keyword.value);
+    let tag = this.keyword.value;
+    let path = `/${tag}`;
+    this.props.onSearch(tag);
+    this.props.history.push(path);
     e.currentTarget.reset();
   }
 
@@ -34,3 +38,5 @@ export default class SearchForm extends Component {
    );
   }
 }
+
+export default withRouter(SearchForm);

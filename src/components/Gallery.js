@@ -18,7 +18,8 @@ const Gallery = props => {
 
   return(
     <div className="photo-container">
-      <h1>Results</h1>
+      {/* Dynamic results displayed */}
+      <h1>Results for {props.tag}</h1>
       <ul>
         {images}
       </ul>
