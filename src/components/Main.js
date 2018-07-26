@@ -43,8 +43,10 @@ componentDidMount() {
     this.performSearch();
   }
 
-componentDidUpdate() {
-  this.performSearch();
+componentDidUpdate(prevProps) {
+  if (this.props.keyword !== prevProps.keyword) {
+    this.performSearch();
+    }
 }
 
 performSearch = (keyword = this.props.keyword || 'Misty Mountain') => {
