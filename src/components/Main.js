@@ -32,14 +32,12 @@ export default class Main extends Component {
   constructor() {
     super();
     this.state = {
-      images: []
+      images: [],
+      loading: true
     }
   }
 
 componentDidMount() {
-  if (this.props.history !== undefined) {
-    this.props.history.push("/MistyMountain");
-  }
     this.performSearch();
   }
 
@@ -56,7 +54,8 @@ performSearch = (keyword = this.props.keyword || 'Misty Mountain') => {
   axios.get(`https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${keyword}&per_page=20&format=json&nojsoncallback=1`)
     .then(response => {
       this.setState({
-        images: response.data.photos.photo
+        images: response.data.photos.photo,
+        loading: false
       })
     })
 
@@ -73,7 +72,13 @@ performSearch = (keyword = this.props.keyword || 'Misty Mountain') => {
 
         <Navigation categories={categories}/>
 
-        <Gallery data={this.state.images} tag={tag} />
+        {
+          (this.state.loading)
+          ? <p>Loading...</p>
+          : <Gallery data={this.state.images} tag={tag} />
+        }
+
+
 
       </div>
     );

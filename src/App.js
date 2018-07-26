@@ -18,7 +18,7 @@ class App extends Component {
 
           <Route exact path="/"component={Main} />
 
-          <Route path="/:tag" component={QueryResults } />
+          <Route path="/search/:tag" component={QueryResults } />
 
 
           {categories.map((category, index) =>
